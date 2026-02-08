@@ -96,6 +96,13 @@ app.all('*', async (req: any, res: any) => {
   res.sendStatus(200);
 });
 
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '..', 'dist-client')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'dist-client', 'index.html'));
+});
+
 // Start the server on 0.0.0.0 to ensure it is externally reachable
 app.listen(port, "0.0.0.0", () => {
   console.log(`VoxVerify Production Server listening on port ${port}`);
