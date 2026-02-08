@@ -104,6 +104,18 @@ app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '..', 'dist-client', 'index.html'));
 });
 
+// DEBUG: Print current directory structure
+import fs from 'fs';
+console.log('Current __dirname:', __dirname);
+try {
+  console.log('Contents of ..:', fs.readdirSync(path.join(__dirname, '..')));
+  console.log('Contents of ../dist-client:', fs.readdirSync(path.join(__dirname, '..', 'dist-client')));
+} catch (e) {
+  console.log('Error reading directories:', e);
+}
+
+// Start the server on 0.0.0.0...
+
 // Start the server on 0.0.0.0 to ensure it is externally reachable
 app.listen(port, "0.0.0.0", () => {
   console.log(`VoxVerify Production Server listening on port ${port}`);
