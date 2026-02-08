@@ -1,3 +1,4 @@
+import type { Request, Response } from 'express';
 import express from 'express';
 import { GoogleGenAI, Type } from "@google/genai";
 import path from 'path';
@@ -99,7 +100,7 @@ app.all('*', async (req: any, res: any) => {
 // Serve static files from React build
 app.use(express.static(path.join(__dirname, '..', 'dist-client')));
 
-app.get('*', (req, res) => {
+app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '..', 'dist-client', 'index.html'));
 });
 
