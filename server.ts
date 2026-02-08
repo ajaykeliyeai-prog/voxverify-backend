@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 
 const app = express();
 // Render will inject PORT; fallback to 8080 for local dev
-const port: number = Number(process.env.PORT) || 8080;
+const port = (process.env.PORT ? parseInt(process.env.PORT, 10) : 8080) as number;
 
 // Body limits for large base64 audio
 app.use(express.json({ limit: '50mb' }));
