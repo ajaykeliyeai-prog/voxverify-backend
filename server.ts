@@ -98,8 +98,9 @@ app.all('*', (_req: Request, res: Response) => {
 });
 
 // Start the server on 0.0.0.0 to ensure it is externally reachable
-app.listen(port, "0.0.0.0", () => {
+app.listen(Number(port), "0.0.0.0", () => {
   console.log(`VoxVerify Production Server listening on port ${port}`);
 });
+
 
 
