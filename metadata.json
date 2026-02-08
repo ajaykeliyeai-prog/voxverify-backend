@@ -1,0 +1,7 @@
+{
+  "name": "VoxVerify AI Detection",
+  "description": "A professional AI-powered system for detecting synthetic voices and deepfake audio across five languages: English, Tamil, Hindi, Malayalam, and Telugu.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
