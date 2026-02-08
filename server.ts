@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 
 const app = express();
 // Render will inject PORT; fallback to 8080 for local dev
-const port = (process.env.PORT ? parseInt(process.env.PORT, 10) : 8080) as number;
+const port = process.env.PORT || '8080';
 
 // Body limits for large base64 audio
 app.use(express.json({ limit: '50mb' }));
@@ -98,9 +98,10 @@ app.all('*', (_req: Request, res: Response) => {
 });
 
 // Start the server on 0.0.0.0 to ensure it is externally reachable
-app.listen(port, "0.0.0.0", () => {
+app.listen(parseInt(process.env.PORT || '8080', 10), "0.0.0.0", () => {
   console.log(`VoxVerify Production Server listening on port ${port}`);
 });
+
 
 
 
